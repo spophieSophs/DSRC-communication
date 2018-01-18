@@ -2,7 +2,7 @@ import pickle
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-"""This script focus on the impacts of the packet generation rate on the total collision probability."""
+"""This script focus on the impacts of the packet generation rate on the total collision probability in V2I communication."""
 
 if __name__ == '__main__':
     with open('update3012dataV2I.pkl', 'rb') as f10, open("5Hz1001data.pkl", 'rb') as f5, open('2Hz1001data.pkl', 'rb') as f2, open('1Hz1001data.pkl', 'rb') as f1:
