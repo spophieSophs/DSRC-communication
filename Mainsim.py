@@ -1,3 +1,5 @@
+"""This script provides the main simulation of SUMO and a proposed module. Note that for the purpose of comparison, 
+the vehicle positions of the outputs are adjusted according to Veins."""
 import os, sys, time, subprocess, pickle  
 sys.path.append(os.path.join('c://','Program Files','sumo-0.30.0','tools'))
 import traci
@@ -8,7 +10,7 @@ import time, random
 from rtree import index
 import pandas as pd
 import itertools
-"""Update version, includes rec_pow, positions, collision probability, and etc. Excluding the number of neighbours.
+"""Update version, includes rec_pow, positions, collision probability, and etc. 
    NOTE-1: the position of vehicles has been changed based on veins rule-- add margin, and y flipflop.
    NOTE-2: the rec_pow function has been modified, thus comment out the antenna gain part.
    NOTE-3: the dist_thre has been modified, based on two ray interference model.
@@ -21,7 +23,7 @@ import itertools
 
 
 # input file: region of interest, use the xml2geojson file 
-infile = r'C:/Users/xie.meng/Desktop/LUSTScenario-master/code/15122017/Final/xml2geo14122017.geojson'
+infile = r'path/to/building/geometry/geojsonfile'
 # ROI: region of interest, x-y coordinates, left bottom and right up.
 ROI = [(4894.00, 6732.00), (7395.00, 8175.00)]
 
@@ -51,9 +53,9 @@ T_pk = 40
 
 # port of traci connection to python
 PORT = 8813
-# sumoBinary = "C:/Program Files/sumo-0.30.0/bin/sumo-gui.exe"
-sumoBinary = "C:/Program Files/sumo-0.30.0/bin/sumo.exe"
-sumoConfig = "C:/Users/xie.meng/Desktop/LUSTScenario-master/scenario/due.static.sumocfg"
+# sumoBinary = "path/to/sumo-gui.exe"
+sumoBinary = "path/to/sumo.exe"
+sumoConfig = "path/to/sumocfg/file"
 sumoProcess = subprocess.Popen([sumoBinary, '-c', sumoConfig, "--remote-port", str(PORT)], stdout= sys.stdout, stderr=sys.stderr)
 # setup traci
 traci.init(PORT)
@@ -173,5 +175,5 @@ df = pd.DataFrame.from_records(List, columns=labels)
 print("--- {}s seconds ---".format(time.time() - start_time))
 print("--- Number of vehicles in each step ---", Num_veh)
 
-with open('debug2112data.pkl', 'wb') as fw:
+with open('output pickle', 'wb') as fw:
     pickle.dump(df, fw)
