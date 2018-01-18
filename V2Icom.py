@@ -3,7 +3,7 @@ sys.path.append(os.path.join('c://','Program Files','sumo-0.30.0','tools'))
 import traci
 import math
 from DeLOSNLOS import * 
-from total_probnew import coll_prob
+from collisionprobability import coll_prob
 import time, random
 from rtree import index
 import pandas as pd
@@ -22,7 +22,7 @@ import itertools
 
 
 # input file: region of interest, use the xml2geojson file 
-infile = r'C:/Users/xie.meng/Desktop/LUSTScenario-master/code/15122017/Final/xml2geo14122017.geojson'
+infile = r'path/to/building/geometry/geojsonfile'
 # ROI: region of interest, x-y coordinates, left bottom and right up.
 ROI = [(4894.00, 6732.00), (7395.00, 8175.00)]
 
@@ -56,9 +56,9 @@ T_pk = 40
 
 # port of traci connection to python
 PORT = 8813
-# sumoBinary = "C:/Program Files/sumo-0.30.0/bin/sumo-gui.exe"
-sumoBinary = "C:/Program Files/sumo-0.30.0/bin/sumo.exe"
-sumoConfig = "C:/Users/xie.meng/Desktop/LUSTScenario-master/scenario/V2I.sumocfg" # change the packet sending frequency at V2I.sumocfg and the step range in this code
+# sumoBinary = "path/to/sumo-gui.exe"
+sumoBinary = "path/to/sumo.exe"
+sumoConfig = "path/to/V2Isumocfg" # change the packet sending frequency at V2I.sumocfg and the step range in this code
 sumoProcess = subprocess.Popen([sumoBinary, '-c', sumoConfig, "--remote-port", str(PORT)], stdout= sys.stdout, stderr=sys.stderr)
 # setup traci
 traci.init(PORT)
