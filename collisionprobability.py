@@ -1,5 +1,4 @@
-"""This script uses the own probabilistic model to caluculate the total collision probability with input of Pdc from prob_result().
-The prob_result() function calculates the direct collision probability and write the Pdc into a pickle file."""
+"""This script is the collision probabilistic model for DSRC technology."""
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.optimize import fsolve
