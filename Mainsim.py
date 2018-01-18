@@ -5,7 +5,7 @@ sys.path.append(os.path.join('c://','Program Files','sumo-0.30.0','tools'))
 import traci
 import math
 from DeLOSNLOS import * 
-from total_probnew import coll_prob
+from collisionprobability import coll_prob
 import time, random
 from rtree import index
 import pandas as pd
